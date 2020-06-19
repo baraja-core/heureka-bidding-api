@@ -225,10 +225,16 @@ final class HeurekaApi
 		} elseif ($method === self::METHOD_CATEGORY_INDEX) {
 			$return = new CategoryIndexResponse($result['count'], $result['categories']);
 		} elseif ($method === self::METHOD_CATEGORY_GET) {
+			if (array_key_exists('category', $result) === true && $result['category'] === null) {
+				throw new \InvalidArgumentException('Category does not exist (because empty response).');
+			}
 			$return = new Category($result['category']);
 		} elseif ($method === self::METHOD_PRODUCT_INDEX) {
 			$return = new ProductIndexResponse($result['count'], $result['products']);
 		} elseif ($method === self::METHOD_PRODUCT_GET) {
+			if (array_key_exists('product', $result) === true && $result['product'] === null) {
+				throw new \InvalidArgumentException('Product does not exist (because empty response).');
+			}
 			$return = new Product($result['product']);
 		} else {
 			throw new \RuntimeException('Mapper for method "' . $method . '" does not exist.');
