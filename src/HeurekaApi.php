@@ -68,6 +68,18 @@ final class HeurekaApi
 
 
 	/**
+	 * Create typed selection with fully works data types.
+	 *
+	 * @param string $locale
+	 * @return QueryBuilder
+	 */
+	public function createQuery(string $locale): QueryBuilder
+	{
+		return new QueryBuilder($this, $locale);
+	}
+
+
+	/**
 	 * The given endpoint will be used as the master for routing all requests.
 	 *
 	 * @internal
