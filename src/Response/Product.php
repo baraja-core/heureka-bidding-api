@@ -171,6 +171,12 @@ final class Product extends BaseResponse
 	}
 
 
+	public function isSoldOut(): bool
+	{
+		return $this->statusName !== 'ACTIVE';
+	}
+
+
 	public function getRating(): ?int
 	{
 		return $this->rating;
@@ -213,6 +219,12 @@ final class Product extends BaseResponse
 	public function getTopShop(): ?Shop
 	{
 		return $this->topShop;
+	}
+
+
+	public function getShopsCount(): int
+	{
+		return \count($this->shops);
 	}
 
 
