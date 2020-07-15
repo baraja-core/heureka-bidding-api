@@ -61,36 +61,24 @@ final class Shop extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getSlug(): string
 	{
 		return $this->slug;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getHomepage(): string
 	{
 		return $this->homepage;
@@ -106,9 +94,6 @@ final class Shop extends BaseResponse
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	public function isCertifiedSeller(): bool
 	{
 		return $this->certifiedSeller;
@@ -124,36 +109,24 @@ final class Shop extends BaseResponse
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getRating(): ?int
 	{
 		return $this->rating;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getRatingCount(): ?int
 	{
 		return $this->ratingCount;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getReviewCount(): ?int
 	{
 		return $this->reviewCount;
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	public function isCashBackQuarantee(): bool
 	{
 		return $this->cashBackQuarantee;

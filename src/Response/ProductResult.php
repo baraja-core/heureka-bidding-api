@@ -33,36 +33,24 @@ final class ProductResult extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getSlug(): string
 	{
 		return $this->slug;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getUrl(): string
 	{
 		return $this->url;

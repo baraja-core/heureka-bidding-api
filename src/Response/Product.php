@@ -117,126 +117,84 @@ final class Product extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getSlug(): string
 	{
 		return $this->slug;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getUrl(): string
 	{
 		return $this->url;
 	}
 
 
-	/**
-	 * @return Category
-	 */
 	public function getCategory(): Category
 	{
 		return $this->category;
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCategoryPosition(): int
 	{
 		return $this->categoryPosition;
 	}
 
 
-	/**
-	 * @return float
-	 */
 	public function getMinPrice(): float
 	{
 		return $this->minPrice;
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getStatusId(): int
 	{
 		return $this->statusId;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getStatusName(): string
 	{
 		return $this->statusName;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getRating(): ?int
 	{
 		return $this->rating;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getRatingCount(): ?int
 	{
 		return $this->ratingCount;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getReviewCount(): ?int
 	{
 		return $this->reviewCount;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getProducerId(): ?int
 	{
 		return $this->producerId;
 	}
 
 
-	/**
-	 * @return string|null
-	 */
 	public function getProducerName(): ?string
 	{
 		return $this->producerName;
@@ -252,9 +210,6 @@ final class Product extends BaseResponse
 	}
 
 
-	/**
-	 * @return Shop|null
-	 */
 	public function getTopShop(): ?Shop
 	{
 		return $this->topShop;

@@ -33,9 +33,6 @@ final class ProductIndexResponse extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCount(): int
 	{
 		return $this->count;

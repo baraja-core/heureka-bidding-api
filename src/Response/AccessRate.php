@@ -31,27 +31,18 @@ final class AccessRate
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getSlot(): string
 	{
 		return $this->slot;
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCount(): int
 	{
 		return $this->count;

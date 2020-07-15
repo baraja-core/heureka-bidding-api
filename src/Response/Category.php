@@ -7,6 +7,7 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class Category extends BaseResponse
 {
+
 	/** @var int */
 	private $id;
 
@@ -44,63 +45,42 @@ final class Category extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getId(): int
 	{
 		return $this->id;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getParentId(): ?int
 	{
 		return $this->parentId;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getSlug(): string
 	{
 		return $this->slug;
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	public function isLeaf(): bool
 	{
 		return $this->leaf;
 	}
 
 
-	/**
-	 * @return int|null
-	 */
 	public function getProductCount(): ?int
 	{
 		return $this->productCount;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getUrl(): string
 	{
 		return $this->url;

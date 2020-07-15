@@ -32,9 +32,6 @@ final class AccessRateIndexResponse extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCount(): int
 	{
 		return $this->count;

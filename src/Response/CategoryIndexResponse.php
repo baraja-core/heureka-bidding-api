@@ -7,6 +7,7 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class CategoryIndexResponse extends BaseResponse
 {
+
 	/** @var int */
 	private $count;
 
@@ -32,9 +33,6 @@ final class CategoryIndexResponse extends BaseResponse
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCount(): int
 	{
 		return $this->count;
