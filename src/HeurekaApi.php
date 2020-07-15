@@ -116,6 +116,38 @@ final class HeurekaApi
 
 
 	/**
+	 * Validate and normalize given slug or absolute URL from Heureka to valid product or category slug.
+	 *
+	 * @param string $haystack
+	 * @return string
+	 */
+	public function normalizeSlug(string $haystack): string
+	{
+		if (preg_match('/^https?\:\/\/(?:[^\/]+\.)?heureka\.(?:cz|sk)\/([^\/]+)/', $haystack, $productParser)) { // Product URL with slug
+			$slug = $productParser[1];
+		} elseif (preg_match('/^https?\:\/\/([^\.]+)\.heureka\.(?:cz|sk)\/?$/', $haystack, $categoryParser)) { // Category URL with slug
+			$slug = $categoryParser[1];
+		} elseif (preg_match('/^https?\:\/\//', $haystack)) {
+			throw new \InvalidArgumentException('Input "' . $haystack . '" is not valid Heureka URL.');
+		} else {
+			$slug = $haystack;
+		}
+
+		if (class_exists('\Nette\Utils\Strings') === true) {
+			$normalized = \Nette\Utils\Strings::webalize($slug);
+		} else {
+			$normalized = trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack)), '-');
+		}
+
+		if ($slug !== $normalized) {
+			throw new \InvalidArgumentException('Slug "' . $slug . '" is not valid. Did you mean "' . $normalized . '"?');
+		}
+
+		return $slug;
+	}
+
+
+	/**
 	 * @param string $endpoint
 	 * @param string $locale
 	 * @param string $method
