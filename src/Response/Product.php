@@ -253,4 +253,10 @@ final class Product extends BaseResponse
 	{
 		return $this->images;
 	}
+
+
+	public function getMainImageUrl(): ?string
+	{
+		return $this->images[0]['thumbnail'] ?? null;
+	}
 }
