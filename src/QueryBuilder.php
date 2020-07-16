@@ -167,7 +167,7 @@ final class QueryBuilder
 			];
 		}
 
-		$params = ['slug' => $slug];
+		$params = ['id' => $slug];
 		if ($categoryId !== null) {
 			$params['category_id'] = $categoryId;
 		}
