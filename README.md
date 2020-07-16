@@ -5,8 +5,8 @@ Jednoduše použitelná knihovna pro komunikaci s [Heureka API](https://sluzby.h
 
 V rámci tohoto API můžete stahovat informace o produktech, kategoriích, cenách, dostupnosti a podobně. Data získáváte ve strojově čitelné podobě jako nativní PHP entitu splňující rozhraní `Baraja\HeurekaBiddingApi\Response\Response`.
 
-Instalace
----------
+📦 Instalace
+------------
 
 Jednoduše nainstalujeme [Composerem](https://php.baraja.cz/composer):
 
@@ -18,8 +18,8 @@ A následně stačí knihovnu použít.
 
 Hlavní přednost této knihovny je jednoduché nasazení, přičemž nemá závislost na žádném frameworku a funguje plně automaticky.
 
-Použití v základním PHP
------------------------
+🛠️ Použití v základním PHP
+--------------------------
 
 Pro vytvoření libovolného požadavku stačí vytvořit instanci služby `HeurekaApi`, předat `accessKey` a pokládat jednotlivé dotazy. Jako odpověď bude vždy typová entita.
 
@@ -51,8 +51,8 @@ services:
    heurekaApi: Baraja\HeurekaBiddingApi\HeurekaApi('vas-access-klic')
 ```
 
-Pokročilé volání
-----------------
+⏫ Pokročilé volání
+-------------------
 
 Pro pokročilé sestavení požadavku vždy využijte [oficiální dokumentaci](https://api.heureka.cz/bidding_api/v1/apidoc), přičemž se předávají 3 parametry:
 
@@ -66,15 +66,15 @@ Request vždy sestavujte přes metodu `run()`, která obsahuje pokročilé valid
 
 Pro testování volání API lze poaždavek namířit také na jinou URL. Tyto URL je potřeba nejprve registrovat metodou `setCustomEndpoint(string $locale, string $endpoint)`, které předáme jazyk (například `cs`) a URL (`endpoint`). Vlastní přepisy URL adres mají při routingu vyšší prioritu, než výchozí konstanty. Přepis se provádí v metodě `resolveEndpoint()`, kterou můžete volně zavolat.
 
-Ošetření chyb
--------------
+🧪 Ošetření chyb
+----------------
 
 Pokud při zpracování požadavku nastane jakákoli aplikační chyba, vyhazujeme výjimku `\Baraja\HeurekaBiddingApi\HeurekaException`.
 
 V případě fatálního selhání (například parse error v odpovědi ze serveru) se vyhazuje interní `\RuntimeException`, kterou bychom neměli zachytávat, ale nechat probublat až na jádro aplikace a tam zalogovat. Runtime chyby se při správné konfiguraci knihovny nebudou nikdy vyhazovat a slouží pouze pro debug.
 
-Access klíč
------------
+🔒 Access klíč
+--------------
 
 Pro komunikaci s API potřebujete od Heureky získat API klíč. Použití je omezeno podle počtu požadavků a poté se platí. Základní klíč se mi podařilo získat od podpory zdarma e-mailem (pro účely testování), ale raději na to nespoléhejte.
 
@@ -84,8 +84,8 @@ Informace z oficiální dokumentace:
 >
 > Nejprve je potřeba potvrdit smlouvu na objednávku této služby, poté vám bude poskytnut přístup/token, dokumentace a další potřebné informace. Následně stačí implementovat API.
 
-Potíže s knihovnou a hlášení chyb
----------------------------------
+👷‍♀️ Potíže s knihovnou a hlášení chyb
+---------------------------------------
 
 Jedná se o neoficiální knihovnu, u které není garantována funkčnost na vašem prostředí. Knihovna se i tak snaží splnit co nejvíce obecné rozhraní, aby měla širokou podporu na většině prostředí.
 
@@ -94,3 +94,8 @@ Pro korektní funkčnost potřebujete mít `PHP 7.1` nebo novější ([jak zjist
 Pokud se domníváte, že všechno děláte správně a v knihovně je chyba, [nahlašte to založením nové issue](https://github.com/baraja-core/heureka-bidding-api/issues).
 
 Knihovnu vyvíjí [Jan Barášek](https://baraja.cz).
+
+📄 License
+-----------
+
+`baraja-core/heureka-bidding-api` is licensed under the MIT license. See the [LICENSE](https://github.com/baraja-core/heureka-bidding-api/blob/master/LICENSE) file for more details.
