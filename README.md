@@ -11,7 +11,7 @@ V rámci tohoto API můžete stahovat informace o produktech, kategoriích, cen�
 Jednoduše nainstalujeme [Composerem](https://php.baraja.cz/composer):
 
 ```shell
-composer require baraja-core/heureka-bidding-api
+$ composer require baraja-core/heureka-bidding-api
 ```
 
 A následně stačí knihovnu použít.
