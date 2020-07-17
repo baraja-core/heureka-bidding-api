@@ -11,6 +11,7 @@ use Baraja\HeurekaBiddingApi\Response\CategoryIndexResponse;
 use Baraja\HeurekaBiddingApi\Response\Product;
 use Baraja\HeurekaBiddingApi\Response\ProductIndexResponse;
 use Baraja\HeurekaBiddingApi\Response\Response;
+use Tracy\Debugger;
 
 final class HeurekaApi
 {
@@ -42,13 +43,16 @@ final class HeurekaApi
 	/** @var string */
 	private $accessKey;
 
+	/** @var Panel|null */
+	private $panel;
 
-	/**
-	 * @param string $accessKey
-	 */
+
 	public function __construct(string $accessKey)
 	{
 		$this->accessKey = $accessKey;
+		if (\class_exists('\Tracy\Debugger') === true) {
+			Debugger::getBar()->addPanel($this->panel = new Panel($accessKey));
+		}
 	}
 
 
@@ -176,7 +180,9 @@ final class HeurekaApi
 		} else {
 			$result = $this->callByFileGetContents($endpoint, $body);
 		}
-
+		if ($this->panel !== null) {
+			$this->panel->addCall($endpoint, $locale, $method, $params, $result['result'] ?? $result);
+		}
 		if (isset($result['error']) === true) {
 			HeurekaException::apiRuntimeError($result['error']['message'] ?? '', (int) ($result['error']['code'] ?? 500));
 		}
