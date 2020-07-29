@@ -138,7 +138,7 @@ final class HeurekaApi
 		}
 
 		if (class_exists('\Nette\Utils\Strings') === true) {
-			$normalized = \Nette\Utils\Strings::webalize($slug);
+			$normalized = \Nette\Utils\Strings::webalize($slug, '_');
 		} else {
 			$normalized = trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack)), '-');
 		}
