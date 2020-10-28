@@ -9,7 +9,6 @@ final class HeurekaException extends \Exception
 {
 
 	/**
-	 * @param string $method
 	 * @throws HeurekaException
 	 */
 	public static function methodDoesNotExist(string $method): void
@@ -19,8 +18,6 @@ final class HeurekaException extends \Exception
 
 
 	/**
-	 * @param string $message
-	 * @param int $code
 	 * @throws HeurekaException
 	 */
 	public static function apiRuntimeError(string $message, int $code): void
@@ -28,7 +25,6 @@ final class HeurekaException extends \Exception
 		if ($message === 'Missing or invalid access key.') {
 			$message .= ' Did you ask the Heureka administrators for an access key? More information: https://sluzby.heureka.cz/napoveda/bidding-api/';
 		}
-
 		if (preg_match('/^Method "([^"]+)" is not defined\.$/', $message)) {
 			$message .= ' Did you mean "' . implode('", "', HeurekaApi::METHODS) . '"?';
 		}
@@ -38,7 +34,6 @@ final class HeurekaException extends \Exception
 
 
 	/**
-	 * @param string $locale
 	 * @return HeurekaException
 	 */
 	public static function apiEndpointDoesNotExist(string $locale): self

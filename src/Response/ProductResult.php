@@ -7,18 +7,13 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class ProductResult extends BaseResponse
 {
+	private int $id;
 
-	/** @var int */
-	private $id;
+	private string $name;
 
-	/** @var string */
-	private $name;
+	private string $slug;
 
-	/** @var string */
-	private $slug;
-
-	/** @var string */
-	private $url;
+	private string $url;
 
 
 	/**

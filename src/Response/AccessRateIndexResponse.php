@@ -10,16 +10,13 @@ namespace Baraja\HeurekaBiddingApi\Response;
  */
 final class AccessRateIndexResponse extends BaseResponse
 {
-
-	/** @var int */
-	private $count;
+	private int $count;
 
 	/** @var AccessRate[] */
-	private $accessRates = [];
+	private array $accessRates = [];
 
 
 	/**
-	 * @param int $count
 	 * @param mixed[] $accessRates
 	 */
 	public function __construct(int $count, array $accessRates)

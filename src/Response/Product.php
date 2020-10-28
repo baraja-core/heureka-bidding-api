@@ -7,63 +7,47 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class Product extends BaseResponse
 {
+	private int $id;
 
-	/** @var int */
-	private $id;
+	private string $name;
 
-	/** @var string */
-	private $name;
+	private string $slug;
 
-	/** @var string */
-	private $slug;
+	private string $url;
 
-	/** @var string */
-	private $url;
+	private Category $category;
 
-	/** @var Category */
-	private $category;
+	private int $categoryPosition;
 
-	/** @var int */
-	private $categoryPosition;
+	private float $minPrice;
 
-	/** @var float */
-	private $minPrice;
+	private int $statusId;
 
-	/** @var int */
-	private $statusId;
+	private string $statusName;
 
-	/** @var string */
-	private $statusName;
+	private ?int $rating;
 
-	/** @var int|null */
-	private $rating;
+	private ?int $ratingCount;
 
-	/** @var int|null */
-	private $ratingCount;
+	private ?int $reviewCount;
 
-	/** @var int|null */
-	private $reviewCount;
+	private ?int $producerId;
 
-	/** @var int|null */
-	private $producerId;
-
-	/** @var string|null */
-	private $producerName;
+	private ?string $producerName;
 
 	/** @var Shop[] */
-	private $shops = [];
+	private array $shops = [];
 
-	/** @var Shop|null */
-	private $topShop;
+	private ?Shop $topShop;
 
 	/** @var Shop[] */
-	private $highlightedShops = [];
+	private array $highlightedShops = [];
 
 	/** @var mixed[] */
-	private $offerAttributes;
+	private array $offerAttributes;
 
 	/** @var string[][] */
-	private $images;
+	private array $images;
 
 
 	/**
@@ -86,16 +70,13 @@ final class Product extends BaseResponse
 			$this->ratingCount = $haystack['rating']['rating_count'];
 			$this->reviewCount = $haystack['rating']['review_count'];
 		}
-
 		if (isset($haystack['producer']) === true) {
 			$this->producerId = $haystack['producer']['id'];
 			$this->producerName = $haystack['producer']['name'];
 		}
-
 		if (isset($haystack['top_shop']) === true) {
 			$this->topShop = new Shop($haystack['top_shop']);
 		}
-
 		if (isset($haystack['highlighted_shops']) !== []) {
 			$highlightedShops = [];
 			foreach ($haystack['highlighted_shops'] as $highlightedShop) {
@@ -103,7 +84,6 @@ final class Product extends BaseResponse
 			}
 			$this->highlightedShops = $highlightedShops;
 		}
-
 		if (isset($haystack['shops']) !== []) {
 			$shops = [];
 			foreach ($haystack['shops'] as $shop) {

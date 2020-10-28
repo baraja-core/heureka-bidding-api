@@ -38,13 +38,11 @@ final class HeurekaApi
 	];
 
 	/** @var string[] (locale => URL) */
-	private $customEndpoints = [];
+	private array $customEndpoints = [];
 
-	/** @var string */
-	private $accessKey;
+	private string $accessKey;
 
-	/** @var Panel|null */
-	private $panel;
+	private ?Panel $panel;
 
 
 	public function __construct(string $accessKey)
@@ -71,12 +69,7 @@ final class HeurekaApi
 	}
 
 
-	/**
-	 * Create typed selection with fully works data types.
-	 *
-	 * @param string $locale
-	 * @return QueryBuilder
-	 */
+	/** Create typed selection with fully works data types. */
 	public function createQuery(string $locale): QueryBuilder
 	{
 		return new QueryBuilder($this, $locale);
@@ -87,8 +80,6 @@ final class HeurekaApi
 	 * The given endpoint will be used as the master for routing all requests.
 	 *
 	 * @internal
-	 * @param string $locale
-	 * @param string $endpoint
 	 */
 	public function setCustomEndpoint(string $locale, string $endpoint): void
 	{
@@ -97,8 +88,6 @@ final class HeurekaApi
 
 
 	/**
-	 * @param string $locale
-	 * @return string
 	 * @throws HeurekaException
 	 */
 	public function resolveEndpoint(string $locale): string
@@ -106,11 +95,9 @@ final class HeurekaApi
 		if (isset($this->customEndpoints[$locale]) === true) {
 			return $this->customEndpoints[$locale];
 		}
-
 		if ($locale === 'cz' || $locale === 'cs') {
 			return self::ENDPOINT_CZ;
 		}
-
 		if ($locale === 'sk') {
 			return self::ENDPOINT_SK;
 		}
@@ -119,12 +106,7 @@ final class HeurekaApi
 	}
 
 
-	/**
-	 * Validate and normalize given slug or absolute URL from Heureka to valid product or category slug.
-	 *
-	 * @param string $haystack
-	 * @return string
-	 */
+	/** Validate and normalize given slug or absolute URL from Heureka to valid product or category slug. */
 	public function normalizeSlug(string $haystack): string
 	{
 		if (preg_match('/^https?\:\/\/(?:[^\/]+\.)?heureka\.(?:cz|sk)\/([^\/]+)/', $haystack, $productParser)) { // Product URL with slug
@@ -136,13 +118,11 @@ final class HeurekaApi
 		} else {
 			$slug = $haystack;
 		}
-
 		if (class_exists('\Nette\Utils\Strings') === true) {
 			$normalized = \Nette\Utils\Strings::webalize($slug, '_');
 		} else {
 			$normalized = trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($haystack)), '-');
 		}
-
 		if ($slug !== $normalized) {
 			throw new \InvalidArgumentException('Slug "' . $slug . '" is not valid. Did you mean "' . $normalized . '"?');
 		}
@@ -152,9 +132,6 @@ final class HeurekaApi
 
 
 	/**
-	 * @param string $endpoint
-	 * @param string $locale
-	 * @param string $method
 	 * @param mixed[] $params
 	 * @return mixed[]
 	 * @throws HeurekaException
@@ -192,7 +169,6 @@ final class HeurekaApi
 
 
 	/**
-	 * @param string $haystack
 	 * @return mixed[]
 	 */
 	private function jsonDecode(string $haystack): array
@@ -202,7 +178,6 @@ final class HeurekaApi
 		}
 
 		$value = json_decode($haystack, true, 512, JSON_BIGINT_AS_STRING);
-
 		if ($error = json_last_error()) {
 			throw new \RuntimeException(json_last_error_msg(), $error);
 		}
@@ -212,7 +187,6 @@ final class HeurekaApi
 
 
 	/**
-	 * @param string $url
 	 * @param mixed[] $body
 	 * @return mixed[]
 	 * @throws HeurekaException
@@ -244,7 +218,6 @@ final class HeurekaApi
 	/**
 	 * PHP native implementation for backward support.
 	 *
-	 * @param string $url
 	 * @param mixed[] $body
 	 * @return mixed[]
 	 */
@@ -262,14 +235,12 @@ final class HeurekaApi
 
 
 	/**
-	 * @param string $method
 	 * @param mixed[] $rawData
 	 * @return Response
 	 */
 	private function mapResponseToObject(string $method, array $rawData): Response
 	{
 		$result = $rawData['result'];
-
 		if ($method === self::METHOD_ACCESS_RATE_INDEX) {
 			$return = new AccessRateIndexResponse($result['count'], $result['access_rates']);
 		} elseif ($method === self::METHOD_CATEGORY_INDEX) {

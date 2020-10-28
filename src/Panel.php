@@ -10,15 +10,13 @@ use Tracy\IBarPanel;
 
 final class Panel implements IBarPanel
 {
-
-	/** @var string */
-	private $accessKey;
+	private string $accessKey;
 
 	/** @var mixed[][] */
-	private $calls = [];
+	private array $calls = [];
 
 	/** @var string[] */
-	private $endpoints = [];
+	private array $endpoints = [];
 
 
 	public function __construct(string $accessKey)
@@ -80,9 +78,6 @@ final class Panel implements IBarPanel
 
 	/**
 	 * @internal
-	 * @param string $endpoint
-	 * @param string $locale
-	 * @param string $method
 	 * @param mixed[] $params
 	 * @param mixed[] $result
 	 */

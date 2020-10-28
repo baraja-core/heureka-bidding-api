@@ -9,7 +9,7 @@ abstract class BaseResponse implements Response
 {
 
 	/** @var mixed[] */
-	private $rawData;
+	private array $rawData;
 
 
 	/**

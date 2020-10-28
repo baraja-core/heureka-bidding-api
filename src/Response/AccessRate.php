@@ -7,22 +7,13 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class AccessRate
 {
+	private int $id;
 
-	/** @var int */
-	private $id;
+	private string $slot;
 
-	/** @var string */
-	private $slot;
-
-	/** @var int */
-	private $count;
+	private int $count;
 
 
-	/**
-	 * @param int $id
-	 * @param string $slot
-	 * @param int $count
-	 */
 	public function __construct(int $id, string $slot, int $count)
 	{
 		$this->id = $id;

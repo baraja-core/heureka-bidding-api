@@ -7,16 +7,13 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class ProductIndexResponse extends BaseResponse
 {
-
-	/** @var int */
-	private $count;
+	private int $count;
 
 	/** @var ProductResult[] */
-	private $products;
+	private array $products;
 
 
 	/**
-	 * @param int $count
 	 * @param mixed[] $products
 	 */
 	public function __construct(int $count, array $products)

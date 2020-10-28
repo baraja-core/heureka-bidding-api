@@ -7,27 +7,19 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class Category extends BaseResponse
 {
+	private int $id;
 
-	/** @var int */
-	private $id;
+	private ?int $parentId;
 
-	/** @var int|null */
-	private $parentId;
+	private string $name;
 
-	/** @var string */
-	private $name;
+	private string $slug;
 
-	/** @var string */
-	private $slug;
+	private bool $leaf;
 
-	/** @var bool */
-	private $leaf;
+	private ?int $productCount;
 
-	/** @var int|null */
-	private $productCount;
-
-	/** @var string */
-	private $url;
+	private string $url;
 
 
 	/**

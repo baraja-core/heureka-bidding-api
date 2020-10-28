@@ -14,12 +14,9 @@ use Nette\Utils\DateTime;
 
 final class QueryBuilder
 {
+	private HeurekaApi $heurekaApi;
 
-	/** @var HeurekaApi */
-	private $heurekaApi;
-
-	/** @var string */
-	private $locale;
+	private string $locale;
 
 
 	public function __construct(HeurekaApi $heurekaApi, string $locale)
@@ -32,13 +29,6 @@ final class QueryBuilder
 	/**
 	 * Returns list of records about BiddingAPI usage by the authenticated user.
 	 *
-	 * @param int $limit
-	 * @param int $offset
-	 * @param string $type
-	 * @param \DateTime|null $from
-	 * @param \DateTime|null $to
-	 * @param string|null $order
-	 * @return AccessRate
 	 * @throws HeurekaException
 	 */
 	public function accessRateIndex(int $limit = 1000, int $offset = 0, string $type = 'month', ?\DateTime $from = null, ?\DateTime $to = null, ?string $order = null): AccessRate
@@ -82,7 +72,6 @@ final class QueryBuilder
 	/**
 	 * Returns list of all visible categories
 	 *
-	 * @return CategoryIndexResponse
 	 * @throws HeurekaException
 	 */
 	public function categoryIndex(): CategoryIndexResponse
@@ -115,10 +104,6 @@ final class QueryBuilder
 	/**
 	 * Search and list products.
 	 *
-	 * @param string $query
-	 * @param int $limit
-	 * @param int $offset
-	 * @return ProductIndexResponse
 	 * @throws HeurekaException
 	 */
 	public function productIndex(string $query, int $limit = 20, int $offset = 0): ProductIndexResponse
@@ -151,7 +136,6 @@ final class QueryBuilder
 	/**
 	 * Get detailed info about a single product and offers from individual shops.
 	 *
-	 * @param string $slug
 	 * @param string|null $categoryId Slug of a product category. Recommended: use for disambiguation of product slugs as they might not be unique across categories.
 	 * @param string[] $attributes (id => value)
 	 * @return Product

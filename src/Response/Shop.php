@@ -7,39 +7,29 @@ namespace Baraja\HeurekaBiddingApi\Response;
 
 final class Shop extends BaseResponse
 {
+	private int $id;
 
-	/** @var int */
-	private $id;
+	private string $slug;
 
-	/** @var string */
-	private $slug;
+	private string $name;
 
-	/** @var string */
-	private $name;
-
-	/** @var string */
-	private $homepage;
+	private string $homepage;
 
 	/** @var mixed[]|null */
-	private $verifiedByCustomersStatus;
+	private ?array $verifiedByCustomersStatus;
 
-	/** @var bool */
-	private $certifiedSeller;
+	private bool $certifiedSeller;
 
 	/** @var mixed|null */
 	private $shopOfTheYear;
 
-	/** @var int|null */
-	private $rating;
+	private ?int $rating;
 
-	/** @var int|null */
-	private $ratingCount;
+	private ?int $ratingCount;
 
-	/** @var int|null */
-	private $reviewCount;
+	private ?int $reviewCount;
 
-	/** @var bool */
-	private $cashBackQuarantee;
+	private bool $cashBackQuarantee;
 
 
 	/**
